@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Manipal Club Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('images/bgimage.jpg'); /* Use the same background */
+            background-size: 110% auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .portal-title {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2rem;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-align: left;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 3px solid black;
+            background: transparent;
+        }
+        .container-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .login-title {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        .btn-custom {
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 10px;
+            width: 100%;
+            background-color: #d3d3d3;
+            border: 1px solid black;
+            margin-bottom: 20px; /* Keep margin below button */
+            margin-top: 10px; /* Add space above button */
+        }
+         /* Style for input fields */
+        input[type="text"], input[type="password"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        /* Style for error messages */
+        #message-area .alert {
+             text-align: left;
+             font-size: 0.9rem;
+             margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="portal-title">Manipal Club Portal</h1>
+    <div class="container-box">
+        <h2 class="login-title">Admin Login</h2>
+
+        <!-- Message Area -->
+        <div id="message-area"></div>
+
+        <!-- **** MODIFIED FORM **** -->
+        <!-- Added action and method -->
+        <form action="backend/admin_login_process.php" method="post">
+            <!-- Added name="username" -->
+            <input type="text" name="username" class="form-control mb-3" placeholder="Admin ID" required>
+            <!-- Added name="password" -->
+            <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+            <button type="submit" class="btn btn-custom">Login</button>
+        </form>
+        <!-- **** END MODIFIED FORM **** -->
+
+        <p class="mt-3">Back to <a href="index.html">Login Selection</a></p> <!-- Updated link text -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Optional: JavaScript to display error messages -->
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const messageArea = document.getElementById('message-area');
+            const errorStatus = getQueryParam('error');
+
+            messageArea.innerHTML = ''; // Clear previous messages
+
+            const errorMessages = {
+                'missing_fields': 'Please enter both Admin ID and Password.',
+                'invalid_credentials': 'Invalid Admin ID or Password.',
+                'not_admin': 'This account does not have admin privileges.', // If using DB check later
+                'db_error': 'Database connection error.', // If using DB check later
+                'server_error': 'Server error during login.', // If using DB check later
+                'not_logged_in': 'You need to login first.' // If redirected from protected page
+            };
+
+            if (errorStatus && errorMessages[errorStatus]) {
+                 messageArea.innerHTML = `<div class="alert alert-danger" role="alert">${errorMessages[errorStatus]}</div>`;
+            } else if (errorStatus) { // Fallback
+                 messageArea.innerHTML = `<div class="alert alert-danger" role="alert">An unknown error occurred (${errorStatus}).</div>`;
+            }
+        });
+    </script>
+
+</body>
+</html>

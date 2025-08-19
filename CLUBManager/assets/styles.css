@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('background.jpg');
+    background-size: cover;
+}
+
+.container-box {
+    background: rgba(255, 255, 255, 0.2); /* Transparent Box */
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    margin: auto;
+    margin-top: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.portal-title {
+    font-family: 'Times New Roman', serif;
+    font-size: 2rem;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.btn-custom {
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    font-family: Georgia, serif;
+    border-radius: 10px;
+    width: 100%;
+    background-color: #d3d3d3;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}

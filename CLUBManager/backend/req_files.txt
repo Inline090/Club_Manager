@@ -1,0 +1,7 @@
+│── 📂 frontend/         
+│   ├── index.html       # Login Page
+│   ├── register.html    # Member Registration Page
+│   ├── admin.html       # Admin Dashboard
+│   ├── events.html      # Events Page
+│   ├── renew.html       # Membership Renewal Page
+│   ├── payment.html     # Payment Page

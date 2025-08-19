@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Event Management</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <h2>Create Event</h2>
+    <form action="../backend/admin_create_event.php" method="post">
+        <input type="text" name="event_name" placeholder="Event Name" required>
+        <input type="date" name="event_date" required>
+        <input type="text" name="event_location" placeholder="Location" required>
+        <input type="number" name="event_fee" placeholder="Fee" required>
+        <button type="submit">Create Event</button>
+    </form>
+</body>
+</html>
